@@ -1,6 +1,6 @@
 # HashiCorp Boundary
 
-![HashiCorp Boundary Logo](https://raw.githubusercontent.com/hashicorp/boundary/main/docs/static/img/boundary-logo.svg)
+![HashiCorp Boundary Logo](https://www.hashicorp.com/_next/static/media/colorwhite.997fcaf9.svg)
 
 ## Overview
 
