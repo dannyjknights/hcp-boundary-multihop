@@ -76,3 +76,7 @@ resource "aws_ec2_transit_gateway_route_table_propagation" "public_to_private" {
   transit_gateway_attachment_id  = aws_ec2_transit_gateway_vpc_attachment.public_vpc_attachment.id
   transit_gateway_route_table_id = aws_ec2_transit_gateway_route_table.tgw_rt.id
 }
+
+resource "aws_ec2_transit_gateway_vpc_attachment_accepter" "hvp_vault_hvn_tgw_accept" {
+  transit_gateway_attachment_id = hcp_aws_transit_gateway_attachment.hcp_tgw_attachment.id
+}

@@ -12,6 +12,10 @@ terraform {
       source  = "hashicorp/cloudinit"
       version = ">=2.3.2"
     }
+    hcp = {
+      source  = "hashicorp/hcp"
+      version = ">=0.56.0"
+    }
   }
 }
 
