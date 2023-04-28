@@ -8,30 +8,31 @@ HashiCorp Boundary is a secure and efficient way to access distributed infrastru
 
 This README file explains how to set up a multi-hop deployment using Boundary.
 
-## Multi-hop Deployment
+## Multi-hop Deployment using HCP Boundary
 
-A multi-hop deployment allows you to access resources that are not directly reachable from the Boundary controller. This is achieved by deploying additional Boundary nodes between the controller and the target resource.
+HCP Boundary allows for secure access to resources across multiple networks and environments. A multi-hop deployment can be set up to allow users to access resources in a private network, without exposing that network to the Internet. The multi-hop deployment in this repo has been setup as follows:
 
-To set up a multi-hop deployment, follow these steps:
+1. Deploy HCP Boundary.
+2. Deploy a Boundary Ingress Worker in a public network.
+3. Deploy a Boundary Egress Worker in a private network.
+3. Establish a connection between the Boundary Controller and the Boundary Workers.
+4. Configure Boundary to allow access to resources in the private network.
 
-1. Install the Boundary controller on a server that is reachable from the internet.
-2. Install a Boundary worker on each server that you want to access through Boundary.
-3. Install an additional Boundary node on a server that is reachable from the internet and can access the worker nodes.
-4. Configure the Boundary nodes as follows:
-   - The worker nodes should be registered with the additional node as their parent.
-   - The additional node should be registered with the controller as its parent.
-5. Create a Boundary policy that allows access to the desired resources, and assign it to the appropriate users or groups.
+With this setup, users can securely access resources in the private network without needing to connect directly to the network, or expose resources publicly to the Internet
 
-## Environment and tfvars Variables
+## tfvars Variables
 
-The following environment variables can be used to configure the Boundary controller:
+The following tfvars variables have been defined in a terraform.tfvars file:
 
-- `BOUNDARY_ADDR`: The address that the controller listens on (default: `tcp://0.0.0.0:9200`).
-- `BOUNDARY_LOG_LEVEL`: The logging level (default: `info`).
-- `BOUNDARY_DATABASE_URL`: The URL of the database (default: `sqlite:///data/boundary.db`).
-
-The following tfvars variables can be used to configure the Boundary modules:
-
-- `boundary_controller_address`: The address that the controller listens on (default: `tcp://0.0.0.0:9200`).
-- `boundary_worker_count`: The number of worker nodes to deploy (default: `1`).
-- `boundary_additional_node_count`: The number of additional nodes to deploy (default: `0`).
+- `boundary_addr`: The HCP Boundary address, e.g. "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.boundary.hashicorp.
+cloud"
+- `auth_method_id`: "ampw_xxxxxxxxxx"                 
+                 
+- `password_auth_method_login_name`: = ""
+- `password_auth_method_password`:   = ""
+- `private_vpc_cidr`:                = ""
+- `private_subnet_cidr`:             = ""
+- `aws_vpc_cidr`:                    = ""
+- `aws_subnet_cidr`:                 = ""
+- `aws_access`:                      = ""
+- `aws_secret`:                      = ""
