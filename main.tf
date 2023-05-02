@@ -1,4 +1,5 @@
-terraform {
+# Declare the required providers and their version constraints for this Terraform configuration
+terraform {terraform {
   required_providers {
     boundary = {
       source  = "hashicorp/boundary"
@@ -18,12 +19,14 @@ terraform {
     }
   }
 }
-
+# Declare the provider for the AWS resource to be managed by Terraform
 provider "aws" {
   region = "eu-west-2"
 }
 
+# Declare the provider for the HashiCorp Boundary resource to be managed by Terraform
 provider "boundary" {
+  # Use variables to provide values for the provider configuration
   addr                            = var.boundary_addr
   auth_method_id                  = var.auth_method_id
   password_auth_method_login_name = var.password_auth_method_login_name

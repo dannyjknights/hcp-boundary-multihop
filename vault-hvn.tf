@@ -1,3 +1,4 @@
+# Work in progress to create the HVN for HashiCorp Vault
 resource "hcp_hvn" "hcp_vault_hvn" {
   hvn_id         = "hcp-vault-hvn"
   cloud_provider = "aws"

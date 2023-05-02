@@ -1,5 +1,4 @@
-#AWS resource to create the VPC CIDR Block and to enable a DNS hostname to the instances
-#PRIVATE VPC
+#AWS resource to create the Private VPC CIDR Block and to enable a DNS hostname to the instances
 resource "aws_vpc" "boundary_host_vpc" {
   cidr_block           = var.private_vpc_cidr
   enable_dns_hostnames = true

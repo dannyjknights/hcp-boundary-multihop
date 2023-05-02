@@ -1,3 +1,7 @@
+/* Create a static host set for AWS Linux Machines. The hosts to be placed
+within this host set are the public and private hosts, defined within the
+host-catalog.tf configuration.
+*/
 resource "boundary_host_set_static" "aws-linux-machines" {
   name            = "aws-linux-machines"
   description     = "Host set for AWS Linux Machines"
@@ -8,6 +12,11 @@ resource "boundary_host_set_static" "aws-linux-machines" {
   ]
 }
 
+/* The below three resources create dynamic host sets. The attributes_json defines the tags that Boundary
+will look for to automatically pull into Boundary as resources to access. The EC2 instances for this currently
+reside within the aws-dhc-targets folder. The preferred_endpoints addresses need to be changed to use string
+interpolation to reference them properly.
+*/
 resource "boundary_host_set_plugin" "aws-db" {
   name                  = "AWS DB Host Set Plugin"
   host_catalog_id       = boundary_host_catalog_plugin.aws_plugin.id

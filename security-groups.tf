@@ -1,7 +1,9 @@
+# Data block to grab current IP and add into SG rules
 data "http" "current" {
   url = "https://ifconfig.me/ip"
 }
 
+# These SG rules need tidying up!
 resource "aws_security_group" "static_target_sg" {
   name        = "SG for Boundary Public Static Target"
   description = "SG for Boundary Public Static Target"

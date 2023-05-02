@@ -1,3 +1,7 @@
+/* Create a Boundary target with the host set assigned. Specify the egress and/or ingress worker
+you wish to used, based on the filters. The names for the workers are specified as tags within
+the pki-worker.tf configuration file for the workers.
+*/
 resource "boundary_target" "aws_linux_private" {
   type                     = "tcp"
   name                     = "aws-private-linux"
@@ -12,6 +16,10 @@ resource "boundary_target" "aws_linux_private" {
   ]
 }
 
+/* Create a Boundary target with the host set assigned. Specify the egress and/or ingress worker
+you wish to used, based on the filters. The names for the workers are specified as tags within
+the pki-worker.tf configuration file for the workers.
+*/
 resource "boundary_target" "aws_linux_public" {
   type                     = "tcp"
   name                     = "aws-public-linux"
@@ -25,6 +33,10 @@ resource "boundary_target" "aws_linux_public" {
   ]
 }
 
+/* Create a Boundary target with the host set assigned. Specify the egress and/or ingress worker
+you wish to used, based on the filters. The names for the workers are specified as tags within
+the pki-worker.tf configuration file for the workers.
+*/
 resource "boundary_target" "aws" {
   type                     = "tcp"
   name                     = "aws-ec2"

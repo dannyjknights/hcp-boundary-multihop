@@ -1,9 +1,11 @@
+# Create a Static Host Catalog called DevOps for targets to be associated with.
 resource "boundary_host_catalog_static" "devops" {
   name        = "DevOps"
   description = "For DevOps Team"
   scope_id    = boundary_scope.project.id
 }
 
+# Creates a static public Boundary host and assigns it to the static host catalog
 resource "boundary_host_static" "amazon_public_linux" {
   name            = "aws-public-linux"
   description     = "AWS Linux host"
@@ -11,6 +13,7 @@ resource "boundary_host_static" "amazon_public_linux" {
   host_catalog_id = boundary_host_catalog_static.devops.id
 }
 
+# Creates a static private Boundary host and assigns it to the static host catalog
 resource "boundary_host_static" "amazon_private_linux" {
   name            = "aws-private-linux"
   description     = "AWS Linux host"
@@ -18,6 +21,7 @@ resource "boundary_host_static" "amazon_private_linux" {
   host_catalog_id = boundary_host_catalog_static.devops.id
 }
 
+# Creates a dynamic host catalog for AWS
 resource "boundary_host_catalog_plugin" "aws_plugin" {
   name        = "AWS Catalog"
   description = "AWS Host Catalog"
