@@ -1,5 +1,5 @@
 # Declare the required providers and their version constraints for this Terraform configuration
-terraform {terraform {
+terraform {
   required_providers {
     boundary = {
       source  = "hashicorp/boundary"
@@ -19,6 +19,7 @@ terraform {terraform {
     }
   }
 }
+
 # Declare the provider for the AWS resource to be managed by Terraform
 provider "aws" {
   region = "eu-west-2"

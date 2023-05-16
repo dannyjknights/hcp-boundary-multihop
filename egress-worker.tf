@@ -118,7 +118,7 @@ resource "aws_instance" "boundary_egress_worker" {
   ami                         = "ami-09ee0944866c73f62"
   instance_type               = "t2.micro"
   availability_zone           = "eu-west-2b"
-  associate_public_ip_address = true
+  associate_public_ip_address = false
   user_data_replace_on_change = true
   user_data_base64            = data.cloudinit_config.boundary_egress_worker.rendered
   key_name                    = "boundary"
