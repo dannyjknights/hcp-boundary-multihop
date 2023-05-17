@@ -12,11 +12,13 @@ This README file explains how to set up a multi-hop deployment using Boundary.
 
 HCP Boundary allows for secure access to resources across multiple networks and environments. A multi-hop deployment can be set up to allow users to access resources in a private network, without exposing that network to the Internet. The multi-hop deployment in this repo has been setup as follows:
 
-1. Deploy HCP Boundary.
+1. Configure HCP Boundary.
 2. Deploy a Boundary Ingress Worker in a public network.
 3. Deploy a Boundary Egress Worker in a private network.
 3. Establish a connection between the Boundary Controller and the Boundary Workers.
 4. Configure Boundary to allow access to resources in the private network.
+
+Your HCP Boundary Cluster needs to be created prior to executing the Terraform code. 
 
 With this setup, users can securely access resources in the private network without needing to connect directly to the network, or expose resources publicly to the Internet
 
