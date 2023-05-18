@@ -7,7 +7,8 @@ resource "aws_instance" "boundary_target" {
   ami               = "ami-09ee0944866c73f62"
   instance_type     = "t2.micro"
   availability_zone = "eu-west-2b"
-  key_name          = "boundary"
+  key_name          = aws_key_pair.ec2_key.key_name
+  depends_on        = [aws_key_pair.ec2_key]
 
 
   /* This block of code attaches a network interface to the EC2 instance. 

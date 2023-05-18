@@ -121,15 +121,15 @@ resource "aws_instance" "boundary_egress_worker" {
   associate_public_ip_address = false
   user_data_replace_on_change = true
   user_data_base64            = data.cloudinit_config.boundary_egress_worker.rendered
-  key_name                    = "boundary"
+  key_name                    = aws_key_pair.ec2_key.key_name
   subnet_id                   = aws_subnet.private_subnet.id
-  private_ip                  = "192.168.0.7"
+  private_ip                  = "192.168.0.10"
   vpc_security_group_ids      = [aws_security_group.boundary_egress_worker_ssh_9202.id]
   tags = {
     Name = "Boundary Egress Worker"
   }
   depends_on = [
-    aws_nat_gateway.nat_gateway, boundary_worker.egress_pki_worker
+    aws_nat_gateway.nat_gateway, boundary_worker.egress_pki_worker, aws_key_pair.ec2_key
   ]
 }
 

@@ -121,7 +121,7 @@ resource "aws_instance" "boundary_ingress_worker" {
   availability_zone           = "eu-west-2b"
   user_data_replace_on_change = true
   user_data_base64            = data.cloudinit_config.boundary_ingress_worker.rendered
-  key_name                    = "boundary"
+  key_name                    = aws_key_pair.ec2_key.key_name
   private_ip                  = "172.31.32.93"
   subnet_id                   = aws_subnet.boundary_ingress_worker_subnet.id
   vpc_security_group_ids      = [aws_security_group.boundary_ingress_worker_ssh.id]
@@ -129,6 +129,6 @@ resource "aws_instance" "boundary_ingress_worker" {
     Name = "Boundary Ingress Worker"
   }
   depends_on = [
-    aws_nat_gateway.nat_gateway, boundary_worker.ingress_pki_worker
+    aws_nat_gateway.nat_gateway, boundary_worker.ingress_pki_worker, aws_key_pair.ec2_key
   ]
 }
