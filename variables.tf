@@ -53,6 +53,18 @@ variable "availability_zone" {
   default     = "eu-west-2b"
 }
 
+variable "vault_addr" {
+  type = string
+}
+
+variable "vault_token" {
+  type = string
+}
+
+variable "boundary_vault_token" {
+  type = string
+}
+
 variable "ni_tags" {
   type        = map(any)
   description = "Tag to identify the network interface on the resource"

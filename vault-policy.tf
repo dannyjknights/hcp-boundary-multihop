@@ -1,3 +1,6 @@
+resource "vault_policy" "boundary_controller_policy" {
+  name   = "boundary-controller"
+  policy = <<EOT
 path "auth/token/lookup-self" {
   capabilities = ["read"]
 }
@@ -20,4 +23,15 @@ path "sys/leases/revoke" {
 
 path "sys/capabilities-self" {
   capabilities = ["update"]
+}
+EOT
+}
+
+resource "vault_policy" "kv-policy" {
+  name   = "kv-read"
+  policy = <<EOT
+path "credential/ssh" {
+  capabilities = ["read"]
+}
+EOT
 }

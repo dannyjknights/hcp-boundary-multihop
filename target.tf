@@ -31,6 +31,7 @@ resource "boundary_target" "aws_linux_public" {
   host_source_ids = [
     boundary_host_set_static.aws-linux-machines.id
   ]
+  injected_application_credential_source_ids = [boundary_credential_library_vault.vault_cred_lib.id]
 }
 
 /* Create a Boundary target with the host set assigned. Specify the egress and/or ingress worker
