@@ -21,8 +21,8 @@ resource "boundary_credential_library_vault" "vault_cred_lib" {
   name                = "boundary-vault-credential-library"
   description         = "Vault SSH private key credential"
   credential_store_id = boundary_credential_store_vault.vault_cred_store.id
-  path                = "credential/ssh" # change to Vault backend path
+  path                = "kv/data/credentials/ssh"
   http_method         = "GET"
-  credential_type     = "ssh_private_key"
-
+  credential_type     = "username_password"
+  //credential_type = "ssh_private_key"
 }

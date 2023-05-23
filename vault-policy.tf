@@ -30,8 +30,8 @@ EOT
 resource "vault_policy" "kv-policy" {
   name   = "kv-read"
   policy = <<EOT
-path "credential/ssh" {
-  capabilities = ["read"]
+path "kv/*" {
+  capabilities = ["create", "read", "update", "delete", "list", "sudo"]
 }
 EOT
 }

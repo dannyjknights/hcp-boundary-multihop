@@ -21,7 +21,7 @@ you wish to used, based on the filters. The names for the workers are specified 
 the pki-worker.tf configuration file for the workers.
 */
 resource "boundary_target" "aws_linux_public" {
-  type                     = "tcp"
+  type                     = "ssh"
   name                     = "aws-public-linux"
   description              = "AWS Linux Public Target"
   egress_worker_filter     = " \"sm-ingress-upstream-worker1\" in \"/tags/type\" "
@@ -32,6 +32,7 @@ resource "boundary_target" "aws_linux_public" {
     boundary_host_set_static.aws-linux-machines.id
   ]
   injected_application_credential_source_ids = [boundary_credential_library_vault.vault_cred_lib.id]
+  //brokered_credential_source_ids = [boundary_credential_library_vault.vault_cred_lib.id]
 }
 
 /* Create a Boundary target with the host set assigned. Specify the egress and/or ingress worker
