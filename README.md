@@ -24,7 +24,9 @@ With this setup, users can securely access resources in the private network with
 
 ## tfvars Variables
 
-The following tfvars variables have been defined in a terraform.tfvars file:
+The following tfvars variables have been defined in a terraform.tfvars file. Please note that the `variables.tf` file contains values for `vault_addr`, `vault_token` and `boundary_vault_token`. This is as a result of the ongoing integration with Vault for brokered and injected credentials.
+
+If you do not want to include this and just stick to self-generated SSH credentials, please comment out the code in the `vault-credentials-store.tf` and `vault-policy.tf` files.
 
 - `boundary_addr`: The HCP Boundary address, e.g. "https://xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.boundary.hashicorp.
 cloud"
