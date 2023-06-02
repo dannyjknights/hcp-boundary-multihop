@@ -1,3 +1,8 @@
+resource "boundary_scope" "global" {
+  scope_id     = "global"
+  global_scope = true
+}
+
 # Create an organisation scope within global, named "ops-org"
 # The global scope can contain multiple org scopes
 resource "boundary_scope" "org" {
@@ -13,7 +18,7 @@ Each org can contain multiple projects and projects are used to hold
 infrastructure-related resources
 */
 resource "boundary_scope" "project" {
-  name                     = "Ops_Production"
+  name                     = "ops_production"
   description              = "Manage Prod Resources"
   scope_id                 = boundary_scope.org.id
   auto_create_admin_role   = true

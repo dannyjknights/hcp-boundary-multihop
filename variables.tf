@@ -65,10 +65,18 @@ variable "boundary_vault_token" {
   type = string
 }
 
-variable "ni_tags" {
-  type        = map(any)
-  description = "Tag to identify the network interface on the resource"
-  default = {
-    Name = "boundary-vm-nic"
-  }
+variable "okta_issuer" {
+  type = string
+}
+
+variable "okta_client_id" {
+  type = string
+}
+
+variable "okta_client_secret" {
+  type = string
+}
+
+variable "okta_api_url" {
+  type = string
 }
